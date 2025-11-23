@@ -2,7 +2,9 @@ import { IconBrandFacebookFilled, IconBrandGithubFilled, IconBrandInstagram, Ico
 import axios from "axios";
 import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import loginImg from "../assets/imgLogin.svg";
+import logo from "../assets/logo.png";
 import Loader from "../components/Loader";
 import { AuthContext } from "../contexts/AuthContext";
 import { LoaderContext } from "../contexts/LoaderContext";
@@ -42,6 +44,7 @@ export default function Login(){
             console.log(error)
             setIsLoading(false)
             setIsLogin(false)
+            toast.error("Login gagal")
         }
     }
 
@@ -53,7 +56,7 @@ export default function Login(){
             <section className="relative flex justify-center items-center w-screen h-screen bg-blue-semibold">
                 <article className="flex items-center gap-20">
                     <form className="flex flex-col items-center gap-4" onSubmit={loginHandler}>
-                        <img src="" alt="Logo" />
+                        <img src={logo} alt="Logo" className="w-24" />
                         <article className="flex flex-col">
                             <label htmlFor="email" className="text-white">Email</label>
                             <article className="flex items-center gap-2 bg-white rounded-md p-2">

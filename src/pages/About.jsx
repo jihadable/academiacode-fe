@@ -25,16 +25,18 @@ function Team(){
             <article className="flex gap-4 mobile:flex-col">
                 <article className="overflow-hidden rounded-lg bg-blue-bold text-white shadow-2xl">
                     <img src={dedadFajar} alt="Person" width={200} />
-                    <article className="flex flex-col p-2">
+                    <article className="flex flex-col p-2 gap-2">
                         <p className="font-bold">Dedad Fajar</p>
                         <p>UI/UX Designer</p>
+                        <p className="text-sm py-1 px-2 rounded-full bg-blue-semibold">Ex. Bangkit Academy</p>
                     </article>
                 </article>
                 <article className="overflow-hidden rounded-lg bg-blue-bold text-white shadow-2xl">
                     <img src={umarJihad} alt="Person" width={200} />
-                    <article className="flex flex-col p-2">
+                    <article className="flex flex-col p-2 gap-2">
                         <p className="font-bold">Umar Jihad</p>
                         <p>Fullstack Developer</p>
+                        <p className="text-sm py-1 px-2 rounded-full bg-blue-semibold">Ex. Coding Camp by DBS</p>
                     </article>
                 </article>
             </article>
@@ -51,7 +53,7 @@ function BackgroundAndTarget(){
                         <IconBook stroke={1.5} width={56} height={56} />
                         <h3 className="font-bold text-2xl">Latar belakang</h3>
                     </article>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam similique quasi, molestiae sed odio labore animi id incidunt asperiores cum, maiores optio ratione laboriosam quidem. Quam officia doloribus corporis veniam laudantium molestias sequi nam dolor explicabo dolore distinctio dolorum libero iusto rem quae et, possimus accusantium aspernatur alias, tempore nihil!</p>
+                    <p>Indonesia membutuhkan 9 juta talenta digital, namun pendidikan berkualitas seringkali mahal dan eksklusif. AcademiaCode hadir menjawab kesenjangan ini, membebaskan pembelajar dari 'tutorial hell' melalui platform terstruktur yang fokus pada praktik pemrograman nyata.</p>
                 </article>
                 <img src={backgorundImg} alt="Coding vibe" className="w-2/5 mobile:w-full" />
             </article>
@@ -62,7 +64,7 @@ function BackgroundAndTarget(){
                         <IconTargetArrow stroke={1.5} width={56} height={56} />
                         <h3 className="font-bold text-2xl">Target kami</h3>
                     </article>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eum rem voluptatum sequi eius voluptas repellat quia inventore numquam. Laborum dolorum corporis eligendi maxime temporibus enim? Alias iure iusto sint commodi unde voluptatem error vel rem enim quis porro totam fuga quo voluptatibus, excepturi magni et rerum asperiores quas nesciunt.</p>
+                    <p>Misi kami adalah mendemokratisasi pendidikan teknologi sejalan dengan SDG 4. Melalui platform live-coding gratis, kami memastikan setiap individu memiliki kesempatan setara untuk menjadi talenta digital kompeten tanpa terhalang oleh hambatan ekonomi.</p>
                 </article>
             </article>
         </section>

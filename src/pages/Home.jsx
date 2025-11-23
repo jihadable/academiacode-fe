@@ -24,7 +24,7 @@ function Hero(){
             <img src={codingVibe1} alt="Coding vibe" className="h-fit drop-shadow-2xl" />
             <article className="text-white">
                 <h3 className="font-bold text-2xl">AcademiaCode</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt nam officiis corrupti harum. Blanditiis quo ipsum laborum temporibus nam. Cumque ut tempore nemo repellendus sunt labore voluptates ad! Aperiam, omnis?</p>
+                <p>AcademiaCode adalah platform collaborative coding yang mendemokratisasi akses literasi digital. Mengintegrasikan pembelajaran mandiri dan komunitas, kami membangun ekosistem inklusif bagi pengguna untuk belajar, mengasah logika, dan berkompetisi dalam satu wadah terpadu.</p>
             </article>
         </section>
     )
@@ -39,31 +39,31 @@ function Features(){
                     <div>
                         <IconCode stroke={1.5} width={56} height={56} />
                     </div>
-                    <h4 className="font-bold text-xl">Code practice</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequatur inventore maxime ullam id cupiditate delectus. Velit similique facere pariatur enim consequuntur, laudantium exercitationem, eaque voluptas quas a explicabo quis.</p>
+                    <h4 className="font-bold text-xl">Latihan soal pemrograman</h4>
+                    <p>Rasakan pengalaman coding tanpa hambatan dengan fitur eksekusi real-time langsung di browser. Tidak perlu lagi repot menginstal compiler atau mengatur environment yang rumit. Cukup buka, ketik, dan jalankan kode seketika untuk pembelajaran yang instan.</p>
                 </article>
                 <article  className="flex flex-col p-4 rounded-2xl bg-blue-bold w-2/5 text-white gap-4 shadow-2xl mobile:w-full">
                     <div>
-                        <IconUsers stroke={1.5} width={56} height={56} />
+                        <IconClipboardText stroke={1.5} width={56} height={56} />
                     </div>
                     <h4 className="font-bold text-xl">User-generated problems</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequatur inventore maxime ullam id cupiditate delectus. Velit similique facere pariatur enim consequuntur, laudantium exercitationem, eaque voluptas quas a explicabo quis.</p>
+                    <p>Jadilah kreator dengan merancang tantangan koding sendiri. Kontribusi Anda akan dikurasi untuk menjaga kualitas dan memperkaya materi bagi seluruh komunitas.</p>
                 </article>
             </article>
             <article className="flex gap-4 mobile:flex-col">
                 <article className="flex flex-col p-4 rounded-2xl bg-blue-bold w-2/5 text-white gap-4 shadow-2xl mobile:w-full">
                     <div>
-                        <IconClipboardText stroke={1.5} width={56} height={56} />
+                        <IconChartBarPopular stroke={1.5} width={56} height={56} />
                     </div>
                     <h4 className="font-bold text-xl">Gamifikasi</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequatur inventore maxime ullam id cupiditate delectus. Velit similique facere pariatur enim consequuntur, laudantium exercitationem, eaque voluptas quas a explicabo quis.</p>
+                    <p>Ubah persepsi belajar pemrograman yang berat menjadi tantangan yang menyenangkan. Dengan elemen poin dan papan peringkat (leaderboard), kami menjaga motivasi Anda tetap tinggi dan membuat progres belajar terasa seperti bermain game.</p>
                 </article>
                 <article className="flex flex-col p-4 rounded-2xl bg-blue-bold w-3/5 text-white gap-4 shadow-2xl mobile:w-full">
                     <div>
-                        <IconChartBarPopular stroke={1.5} width={56} height={56} />
+                        <IconUsers stroke={1.5} width={56} height={56} />
                     </div>
-                    <h4 className="font-bold text-xl">Leaderboard</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequatur inventore maxime ullam id cupiditate delectus. Velit similique facere pariatur enim consequuntur, laudantium exercitationem, eaque voluptas quas a explicabo quis.</p>
+                    <h4 className="font-bold text-xl">Forum komunitas</h4>
+                    <p>Wadah interaksi komunitas yang suportif. Di sini, Anda dapat berdiskusi, mencari solusi kendala pemrograman, serta berbagi wawasan teknologi. Bangun jejaring belajar yang solid bersama sesama pengguna dalam satu forum terpusat..</p>
                 </article>
             </article>
         </section>
