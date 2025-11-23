@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+button{
+  cursor: pointer;
+}
+
+.loader{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HTML: <div class="spinner"></div> */
+.spinner {
+  width: 24px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /* border: 4px solid #e2dfd0; */
+  border: 4px solid #000000;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1{
+   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+}
+@keyframes l20-2{ 
+  0%    {transform:scaleY(1)  rotate(0deg)}
+  49.99%{transform:scaleY(1)  rotate(135deg)}
+  50%   {transform:scaleY(-1) rotate(0deg)}
+  100%  {transform:scaleY(-1) rotate(-135deg)}
+}
+
+.skeleton-animation{
+  animation: skeleton_animation 1s linear infinite;
+}
+
+@keyframes skeleton_animation {
+  0% {transform: translateX(-150%) skewX(-20deg);}
+  50% {transform: translateX(-60%) skewX(-20deg);}
+  100% {transform: translateX(150%) skewX(-20deg);}
+}
+
+@theme {
+  --color-blue-bold: #021526;
+  --color-blue-semibold: #03346e;
+  --color-blue-light: #6eacda;
+  --colot-white-base: #e2dfd0;
+
+  --color-Mudah: #2e8b57;
+  --color-Sedang: #ffd700;
+  --color-Sulit: #ff3d3d;
+} 
+
+@custom-variant mobile (@media (max-width: 480px));
+@custom-variant tablet (@media (min-width: 481px) and (max-width: 1023px));
