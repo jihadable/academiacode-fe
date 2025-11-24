@@ -53,6 +53,7 @@ export default function Register(){
             console.log(error)
             setIsLoading(false)
             setIsLogin(false)
+            toast.error("Pendaftaran gagal")
         }
     }
 

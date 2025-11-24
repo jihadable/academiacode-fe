@@ -3,6 +3,7 @@ import { IconChevronDown, IconClipboardText, IconCode, IconInfoCircle, IconPlaye
 import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../contexts/AuthContext";
@@ -237,6 +238,7 @@ function CodeField({ problem, defaultCodes, setSubmission, setSelectedBar }){
         } catch(error){
             console.log(error)
             setIsLoading(false)
+            toast.error("Jawaban gagal disubmit")
         }
     }
 
