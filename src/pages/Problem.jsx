@@ -134,7 +134,7 @@ function Information({ problem, submission, selectedBar, setSelectedBar, isLoadi
                         <>
                         {
                             submission.status == "Accepted" &&
-                            <article className="flex items-center gap-2">
+                            <article className="flex items-center gap-2 p-2">
                                 <p className="font-bold text-xl text-Mudah">Accepted</p>
                                 <p className="text-sm text-gray-400">•</p>
                                 <p className="text-sm text-gray-400"> {submission.accepted.passed_test_cases}/{submission.accepted.total_test_cases} kasus uji lolos</p>
@@ -173,7 +173,7 @@ function Information({ problem, submission, selectedBar, setSelectedBar, isLoadi
                         }
                         {
                             submission.status == "Runtime Error" &&
-                            <article className="flex flex-col gap-4">
+                            <article className="flex flex-col gap-4 p-2">
                                 <article className="flex items-center gap-2">
                                     <p className="font-bold text-xl text-Sulit">Runtime Error</p>
                                 </article>
