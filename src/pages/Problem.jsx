@@ -53,16 +53,17 @@ export default function Problem(){
 
 function Container({ problem, defaultCodes, submission, setSubmission }){
     const [selectedBar, setSelectedBar] = useState("Deskripsi")
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <section className="flex pt-20 px-2 pb-2 bg-blue-semibold gap-2 mobile:flex-col tablet:flex-col">
-            <Information problem={problem} submission={submission} selectedBar={selectedBar} setSelectedBar={setSelectedBar} />
-            <CodeField problem={problem} defaultCodes={defaultCodes} setSubmission={setSubmission} setSelectedBar={setSelectedBar} />
+            <Information problem={problem} submission={submission} selectedBar={selectedBar} setSelectedBar={setSelectedBar} isLoading={isLoading} />
+            <CodeField problem={problem} defaultCodes={defaultCodes} setSubmission={setSubmission} setSelectedBar={setSelectedBar} isLoading={isLoading} setIsLoading={setIsLoading} />
         </section>
     )
 }
 
-function Information({ problem, submission, selectedBar, setSelectedBar }){
+function Information({ problem, submission, selectedBar, setSelectedBar, isLoading }){
     const bars = [
         {
             svg: <IconInfoCircle stroke={1.5} />,
@@ -91,9 +92,6 @@ function Information({ problem, submission, selectedBar, setSelectedBar }){
             </article>
             </>
         }
-        {
-            problem !== null &&
-            <>
             <article className="flex items-center gap-2 p-2 bg-blue-light rounded-t-md">
             {
                 bars.map((bar, index) => (
@@ -104,31 +102,35 @@ function Information({ problem, submission, selectedBar, setSelectedBar }){
                 ))
             }
             </article>
-            <article className="flex overflow-y-auto">
+            <article className="flex overflow-y-auto h-full">
+                <article className="flex flex-col gap-2 w-full h-full text-white">
             {
-                problem !== null &&
-                <article className="flex flex-col gap-2 w-full h-full p-2 text-white">
+                isLoading ?
+                <article className="relative overflow-hidden flex w-full h-full">
+                    <div className="skeleton-animation absolute top-0 left-0 w-[80%] h-full skew-x-20 bg-white/1"></div>
+                </article> :
+                <>
                 {
                     selectedBar == "Instruksi" &&
-                    <article>
-                    <p className="font-bold">Instruksi Umum</p>
-                    <ul className="list-disc pl-6">
-                        <li>Nama function serta parameter telah ditentukan dan dideklarasikan pada tiap soal, tidak diperbolehkan untuk mengubah nama function dan parameternya</li>
-                        <li>Gunakan return untuk menjalankan output pada function yang telah disediakan</li>
-                        <li>Tidak diperbolehkan menambahkan fungsi <code>console</code> pada bahasa pemrograman javascript, fungsi <code>print</code> pada bahasa pemrograman python, dan <code>echo</code> pada bahasa php</li>
-                    </ul>   
+                    <article className="p-2">
+                        <p className="font-bold">Instruksi Umum</p>
+                        <ul className="list-disc pl-6">
+                            <li>Nama function serta parameter telah ditentukan dan dideklarasikan pada tiap soal, tidak diperbolehkan untuk mengubah nama function dan parameternya</li>
+                            <li>Gunakan return untuk menjalankan output pada function yang telah disediakan</li>
+                            <li>Tidak diperbolehkan menambahkan fungsi <code>console</code> pada bahasa pemrograman javascript, fungsi <code>print</code> pada bahasa pemrograman python, dan fungsi <code>echo</code> serta <code>var_export</code> pada bahasa php</li>
+                        </ul>   
                     </article>
                 }
                 {
                     selectedBar == "Deskripsi" &&
-                    <article dangerouslySetInnerHTML={{__html: problem.description}}></article> 
+                    <article className="p-2" dangerouslySetInnerHTML={{__html: problem.description}}></article> 
                 }
                 {
                     selectedBar == "Jawaban" &&
                     <>
                     {
                         submission === null ?
-                        <p>Belum ada jawaban</p> :
+                        <p className="p-2">Belum ada jawaban</p> :
                         <>
                         {
                             submission.status == "Accepted" &&
@@ -140,7 +142,7 @@ function Information({ problem, submission, selectedBar, setSelectedBar }){
                         }
                         {
                             submission.status == "Wrong Answer" &&
-                            <article className="flex flex-col gap-4">
+                            <article className="flex flex-col gap-4 p-2">
                                 <article className="flex items-center gap-2">
                                     <p className="font-bold text-xl text-Sulit">Wrong Answer</p>
                                     <p className="text-sm text-gray-400">•</p>
@@ -148,24 +150,33 @@ function Information({ problem, submission, selectedBar, setSelectedBar }){
                                 </article>
                                 <article className="flex flex-col w-full">
                                     <p className="text-gray-400 text-sm">Masukan</p>
-                                    <p className="p-2 bg-blue-light/20 w-full rounded-md">{submission.wrong_answer.input}</p>
+                                    <article className="flex flex-col gap-2 p-2 bg-blue-light/20 w-full rounded-md">
+                                    {
+                                        Object.entries(submission.wrong_answer.input).map(([param, value], index) => (
+                                            <article className="flex flex-col gap-1" key={index}>
+                                                <p className="text-sm text-gray-400">{param} =</p>
+                                                <code>{value}</code>
+                                            </article>
+                                        ))
+                                    }
+                                    </article>
                                 </article>
                                 <article className="flex flex-col w-full">
-                                    <p className="text-gray-400 text-sm">Keluaran asli</p>
-                                    <p className="p-2 bg-blue-light/20 w-full rounded-md">{submission.wrong_answer.actual_output}</p>
+                                    <p className="text-gray-400 text-sm">Keluaran</p>
+                                    <code className="p-2 bg-blue-light/20 w-full rounded-md text-red-500">{submission.wrong_answer.actual_output}</code>
                                 </article>
                                 <article className="flex flex-col w-full">
                                     <p className="text-gray-400 text-sm">Harapan keluaran</p>
-                                    <p className="p-2 bg-blue-light/20 w-full rounded-md">{submission.wrong_answer.expected_output}</p>
+                                    <code className="p-2 bg-blue-light/20 w-full rounded-md text-green-500">{submission.wrong_answer.expected_output}</code>
                                 </article>
                             </article>
                         }
                         {
                             submission.status == "Runtime Error" &&
                             <article className="flex flex-col gap-4">
-                                <p className="flex items-center gap-2">
+                                <article className="flex items-center gap-2">
                                     <p className="font-bold text-xl text-Sulit">Runtime Error</p>
-                                </p>
+                                </article>
                                 <article className="flex w-full bg-Sulit/15 p-2 rounded-md">
                                     <pre className="text-gray-400 text-xs whitespace-pre-wrap" dangerouslySetInnerHTML={{__html: submission.runtime_error.stderr.replaceAll("\n", "<br>")}}></pre>
                                 </article>
@@ -175,16 +186,15 @@ function Information({ problem, submission, selectedBar, setSelectedBar }){
                     }
                     </>
                 }
-                </article>
+                </>
             }
+                </article>
             </article>
-            </>
-        }
         </section>
     )
 }
 
-function CodeField({ problem, defaultCodes, setSubmission, setSelectedBar }){
+function CodeField({ problem, defaultCodes, setSubmission, setSelectedBar, isLoading, setIsLoading }){
     const [showLanguageMenu, setShowLanguageMenu] = useState(false)
 
     const languages = defaultCodes?.map(defaultCode => defaultCode.programming_language)
@@ -207,7 +217,6 @@ function CodeField({ problem, defaultCodes, setSubmission, setSelectedBar }){
 
     const { isLogin } = useContext(AuthContext)
     const [code, setCode] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
     const { setLoadingElementWidth, setLoadingElementHeight } = useContext(LoaderContext)
     const submitBtn = useRef(null)
 
